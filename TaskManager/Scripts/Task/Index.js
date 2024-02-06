@@ -1,4 +1,5 @@
 ﻿$(document).ready(function () {
+    //I render the information using jQuery DataTable
     const table = $('#task_table').DataTable({
         ajax: {
             url: getURL,
@@ -67,6 +68,7 @@ $('#btn_send_form').click(function (e) {
     const data = Object.fromEntries(fd);
     console.log(data);
 
+    //Using ajax I send the information to the controller
     $.ajax({
         url: sendURL,
         type: 'POST',
