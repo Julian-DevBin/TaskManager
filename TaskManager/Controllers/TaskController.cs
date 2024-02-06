@@ -16,6 +16,7 @@ namespace TaskManager.Controllers
 {
     public class TaskController : Controller
     {
+        //View of the initial page
         public ActionResult Index()
         {
             //List<LoadTasks> list = null;
@@ -36,6 +37,7 @@ namespace TaskManager.Controllers
             return View();
         }
 
+        //View of the completed tasks page
         public ActionResult CompletedTasks() 
         {
            return View();
@@ -84,6 +86,7 @@ namespace TaskManager.Controllers
             item.Name = collection["name"];
             item.Description = collection["description"];
 
+            //Valid if theres missing information to avoid null values
             if (item.Subject.IsNullOrWhiteSpace()|| item.Name.IsNullOrWhiteSpace() || item.Description.IsNullOrWhiteSpace())
             {
                 return Content("1");
@@ -121,6 +124,7 @@ namespace TaskManager.Controllers
             }
         }
 
+        //Method to return the information to use it in the .cshtml
         public ActionResult GetCompletedTasks()
         {
             using (TaskManagerEntities1 dataBase = new TaskManagerEntities1())
@@ -161,6 +165,7 @@ namespace TaskManager.Controllers
             }
         }
 
+        //Method to send the data to the class that connects with the SQL SP
         public ActionResult updateTasks(FormCollection collection)
         {
             Task task = new Task();
